@@ -1,0 +1,9 @@
+# Directories to ignore
+data/
+outputs/
+logs/
+__pycache__/
+
+# Backup files
+*~
+.DS_Store
