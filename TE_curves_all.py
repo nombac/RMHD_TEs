@@ -38,26 +38,25 @@ def main():
         sigma, teff, omega, lz, pres, stress = 0, 0, 0, 0, 0, 0
         
         # Handle special cases (h2006, h2007) with hardcoded values
-        if targ['name'] == 'h2006':
-            omega = 5.9
-            sigma = 9.89e4
-            teff = 5.3e5
-            flux = SIGMAB * (teff)**4
-            alpha = 0.03
-            stress = 2.0/3.0 * flux / omega
-            pres = stress / alpha
-            lz = 1.0
-            
-        elif targ['name'] == 'h2007':
-            sigma = 4.7e4
-            omega = 17.0
-            flux0 = SIGMAB * (9e5)**4
-            flux = 1.65 * flux0
-            teff = (flux / 2.0 / SIGMAB)**0.25
-            alpha = 0.03
-            stress = 2.0/3.0 * flux / omega
-            pres = stress / alpha
-            lz = 1.0
+        if targ['name'] == 'h2006': # DOI 10.1086/499153
+            omega = 5.9  # 回転角速度 ω=5.90 s^-1（p.3 Table 1）
+            sigma = 9.89e4  # 表面密度 Σ=9.89×10^4 g cm^-2（p.3 Table 1）
+            teff = 5.3e5  # 有効温度 5.3×10^5 K（p.5：time-averaged effective temperature）
+            flux = SIGMAB * (teff)**4  # ステファン＝ボルツマン則から放射フラックス計算
+            alpha = 0.016  # 時間平均αパラメータ（p.6）
+            stress = 2.0/3.0 * flux / omega  # 放射フラックスとωから算出したストレス
+            pres = stress / alpha  # ストレスとαから全圧を計算
+            lz = 1.0  # 高さ方向スケーリング因子（仮定値）
+        elif targ['name'] == 'h2007': # DOI 10.1086/519515
+            omega = 17.0  # 回転角速度 ω=17 s^-1（p.2）
+            sigma = 4.7e4  # 表面密度 Σ=4.7×10^4 g cm^-2（p.2）
+            flux0 = SIGMAB * (9e5)**4  # 有効温度9.0×10^5 Kからの放射フラックス（p.2）
+            flux = 1.65 * flux0  # 初期値より65%大きい放射フラックス（p.4）
+            teff = (flux / 2.0 / SIGMAB)**0.25  # 放射フラックスから片面の有効温度を計算
+            alpha = 0.03  # 時間平均αパラメータ（p.4）
+            stress = 2.0/3.0 * flux / omega  # 放射フラックスとωから算出したストレス
+            pres = stress / alpha  # ストレスとαから全圧を計算
+            lz = 1.0  # 高さ方向スケーリング因子（仮定値）
             
         else:
             # Regular targets - read from simulation data
