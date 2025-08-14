@@ -1,0 +1,23 @@
+ &gascon      mmw = 2.3e0 , gamma = 1.4e0			 &end
+
+ &ggen1	      in0 =  32 , x1min = -0.5 , x1max = 0.5		 &end
+ &ggen2	      jn0 =  64 , x2min = -2.0 , x2max = 2.0		 &end
+ &ggen3	      kn0 = 320 , x3min = -5.0 , x3max = 5.0		 &end
+
+ &pcon	      nlim = 10000000 , tlim = 10000d0, dtmin = 1e-6	 &end
+
+ &hycon	      qcon = 2.0 , courno = 0.6     	      		 &end
+
+ &flocon      efac = 0.5e0 , fvcap = 10e0			 &end
+
+ &dampcon     kdamp = 8 , eta00 = 0.01 				 &end
+
+ &iocon	      dthist = 1e-2 , dtdump = 1e0			 &end
+
+ &irrcon      mu0 = 0.05e0  	       	 			 &end
+
+ &resiscon    f_eta_max = 0.2e0 , eta_max = 5e16		 &end
+
+ &isocon      dfl = 1e-5 , beta = 3e5 , beta2 = 270      	 &end
+
+ &diffcon     itermax = 2000 , eps_norm = 1e-4 , eps_slvsml = 1e-2 , itermax_slvsml = 10000 , ncycle = 10 , npre = 1 , npost = 1 , omega_sor = 1.1e0 , eps_err = 1e30 &end 

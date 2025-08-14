@@ -1,0 +1,27 @@
+&ggen1  in0 =  32 , x1min =  -0.25    , x1max =  0.25  /#25 grid parameters
+&ggen2  jn0 =  64 , x2min =  -1.00    , x2max =  1.00  /
+&ggen3  kn0 = 256 , x3min =  -2.00    , x3max =  2.00  /
+
+&pcon   nlim = 46700000, tlim = 840 , dtmin = 1d-8  /#20 run controls
+&iocon  dthist = 0.01 , dtdump = 1                 /#21 i/o controls
+
+&hycon  qcon = 2.0 , courno = 0.025  /#26 numerical parameters
+
+&flocon  efac = 0.5d0 , fvcap = 1  /#30 energy floor and velocity cap
+&resiscon    f_eta_orbit = 1d-5                               /#36 explicit resistivity
+&dampcon      eta00 = 0.001 , delta_z = 0.10                               /#31 boundary resistive damping
+
+&magcon   beta = 3e30 , beta2 = 30 , config = 'tube'  /#33 initial magnetic field
+&seedcon  seed0 = 4389                                 /#32 random number seed for initial velocity field
+&optable optab = 2 /
+
+&efloorcon  emin = 0.85d11   , tmin = 500d0                              /#32 random number seed for initial velocity field
+&dragcon  fdrag = 1d-2, tdrag = 2d0                                 /#32 random number seed for initial velocity field
+&dflcon   dfl = 1d-6,  dfloor_lim = 1d-4 /
+
+&diffcon0  eps_norm0 = 1 , eps_slvsml0 = 10 , t00 = 2d0 /
+&diffcon  itermax = 1000 , eps_norm = 1d-4 , eps_slvsml = 0.5, itermax_slvsml = 100000000 , ncycle = 1 , npre = 1 , npost = 1 , omega_sor = 1.0 , eps_err = 1d30, ndt_fac = 2, ntrial_max = 9 , cmp_count_limit = 1, ntrial0 = 1/
+&eosfilecon eosfile = 'eos.out' /
+&dtcontrol f_0 = 0.1d0, duration_0 = 0.00001d0 / 
+&tradbccon erad_bc = 10d0/
+&g_neglect d_neglect = 3d0 /

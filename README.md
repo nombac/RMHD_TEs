@@ -40,21 +40,34 @@ pip install numpy matplotlib
 
 ## Simulation Data Structure
 
-Each simulation target (e.g., `ws0433`) requires the following file structure:
+The repository includes simulation data in the `data/` directory. Each simulation target (e.g., `ws0433`) has the following file structure:
 
 ```
-{target_name}/
-├── h/
-│   ├── resolv.data     # Dimension info (n_t, n_vave) [text]
-│   └── vave.data       # Volume-averaged history data [binary]
-├── init/               # Parameter files (at least one required)
-│   ├── iparax.data     # Contains omega, h0 [text]
-│   ├── normalize.data  # Alternative parameter file [text]
-│   └── ipara.data      # Alternative parameter file [text]
-├── src/
-│   └── Makefile        # Determines problem type (isothermal/radiation)
-└── z3dinput            # Simulation input parameters [text]
+data/
+└── {target_name}/
+    ├── h/
+    │   ├── resolv.data     # Dimension info (n_t, n_vave) [text]
+    │   └── vave.data       # Volume-averaged history data [binary]
+    ├── init/               # Parameter files (at least one required)
+    │   ├── iparax.data     # Contains omega, h0 [text]
+    │   ├── normalize.data  # Alternative parameter file [text]
+    │   └── ipara.data      # Alternative parameter file [text]
+    ├── src/
+    │   └── Makefile        # Determines problem type (isothermal/radiation)
+    └── z3dinput            # Simulation input parameters [text]
 ```
+
+### Data Directory Contents
+
+The `data/` directory contains preprocessed simulation data from various ZEUS-MP radiation MHD runs. This includes:
+- **h2006-h2007**: Early radiation MHD simulations (special cases with hardcoded values)
+- **h2009 series**: γ = 5/3 simulations exploring thermal equilibrium
+- **h2011 series**: γ = 1.4 simulations
+- **h2014 series**: Detailed exploration of upper, middle, and lower branches
+- **h2015 series**: Extended parameter studies
+- **h2016 series**: Simulations including self-gravity effects
+
+To regenerate or update the data files, use the provided `copy_data_files.zsh` script which copies necessary files from the original simulation directories.
 
 ### File Formats
 

@@ -1,0 +1,19 @@
+&ggen1  in0 =  32 , x1min = -0.25  , x1max = 0.25  /#25 grid parameters
+&ggen2  jn0 =  64 , x2min = -1.00  , x2max = 1.00  /
+&ggen3  kn0 = 512 , x3min = -4.00  , x3max = 4.00  /
+
+&pcon   nlim = 100000000 , tlim = 600 , dtmin = 1d-6  /#20 run controls
+&iocon  dthist = 0.01 , dtdump = 1                  /#21 i/o controls
+
+&hycon  qcon = 2 , courno = 0.6  /#26 numerical parameters
+
+&flocon  efac = 0.5 , fvcap = 10  /#30 energy floor and velocity cap
+
+&dampcon  eta00 = 0.02 , delta_z = 0.03125                               /#31 boundary resistive damping
+
+&magcon   beta = 1e30 , beta2 = 30 , config = 'tube'  /#33 initial magnetic field
+&seedcon  seed0 = 1234                                /#32 random number seed for initial velocity field
+
+&gascon   mmw = 0.61d0 , gamma = 1.666666666666666d0  /#27 gas constants RADDOM
+
+&diffcon  itermax = 2000 , eps_norm = 1d-4 , eps_slvsml = 1d-2 , itermax_slvsml = 10000 , ncycle = 1  , npre = 1 , npost = 1 , omega_sor = 1.0 , eps_err = 1d30  /#34 implicit diffusion equation solver RADDOM

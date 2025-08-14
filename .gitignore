@@ -1,5 +1,4 @@
 # Directories to ignore
-data/
 outputs/
 logs/
 obsolete/

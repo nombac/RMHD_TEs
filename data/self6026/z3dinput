@@ -1,0 +1,21 @@
+&ggen1  in0 = 128 , x1min =  -12.00    , x1max =  12.00 /#25 grid parameters
+&ggen2  jn0 = 128 , x2min =  -12.00    , x2max =  12.00  /
+&ggen3  kn0 = 64 ,  x3min =  -6.00    , x3max =  6.00  /
+
+&pcon   nlim = 10000000, tlim = 840 , dtmin = 1d-8  /#20 run controls
+&iocon  dthist = 0.01 , dtdump = 1                 /#21 i/o controls
+
+&hycon  qcon = 5.0 , courno = 0.4  /#26 numerical parameters
+
+&flocon  fvcap = 1.  /#30 energy floor and velocity cap
+
+&seedcon  seed0 = 4389                                 /#32 random number seed for initial velocity field
+
+&efloorcon  tmin = 5d0                              /#32 random number seed for initial velocity field
+&dflcon   dfl = 1d-6,  dfloor_lim = 3d-4 /
+
+&diffcon0  eps_norm0 = 1 , eps_slvsml0 = 1d-1 , t00 = 0.01d0 /
+&diffcon  itermax = 500 , eps_norm = 1d-4 , eps_slvsml = 1d-4, itermax_slvsml = 100000 , ncycle = 1 , npre = 10 , npost = 10 , omega_sor = 1.6 , eps_err = 1d30, ndt_fac = 2, ntrial_max = 1 , cmp_count_limit = 1, ntrial0 = 1/
+&eosfilecon eosfile = 'eos_tomida_ne.out' /
+&dtcontrol f_0 = 0.1d0, duration_0 = 1 / 
+&optable dir = '../db/opacity_hybrids-a2/' /

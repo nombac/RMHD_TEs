@@ -1,0 +1,11 @@
+ &rescon   restfile = 'restart.dat', targ = '1126b'            &end
+ &ggen1    in0 =  48 , x1min = -0.225 , x1max = 0.225                        &end
+ &ggen2    jn0 =  96 , x2min = -0.900 , x2max = 0.900                        &end
+ &ggen3    kn0 = 896 , x3min = -4.200 , x3max = 4.200                        &end
+ &pcon     nlim = 100000000, tlim = 5000d0, dtmin = 1d-6, cpulim = 172000  &end
+ &hycon    qcon = 2.0, courno = 0.6                                       &end
+ &etacon   eta00 = 0.01                                                  &end
+ &flocon   efac = 0.5d0, fvcap = 10d0                                     &end
+ &dampcon  kdamp = 32                                                   &end
+ &iocon    dthist = 1d-2, dtdump = 1d0                                    &end
+ &gascon mmw = 0.61 , gamma = 1.66666 &end
