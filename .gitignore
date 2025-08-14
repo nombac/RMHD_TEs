@@ -4,6 +4,9 @@ outputs/
 logs/
 __pycache__/
 
+# Local documentation
+CLAUDE.md
+
 # Backup files
 *~
 .DS_Store
