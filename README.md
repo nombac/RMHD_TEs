@@ -96,12 +96,12 @@ Text file with simulation parameters including:
 3. Run the main script:
 
 ```bash
-python TE_curves_all.py
+python3 TE_curves_all.py
 ```
 
 Output plots will be saved to:
-- `~/Dropbox/eps/s_curve_all.pdf` - TE curves plot
-- `~/Dropbox/eps/alpha_all.pdf` - Alpha parameter plot
+- `outputs/TE_curves_all.pdf` - TE curves plot
+- `outputs/alpha_all.pdf` - Alpha parameter plot
 
 ## Target Configuration
 
