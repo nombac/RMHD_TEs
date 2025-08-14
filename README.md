@@ -1,6 +1,6 @@
-# TE_curves
+# RMHD_TEs
 
-Thermal Equilibrium curves from radiation MHD simulations of accretion flows.
+Thermal Equilibrium states from Radiation MagnetoHydroDynamics simulations of accretion flows.
 
 ## Overview
 

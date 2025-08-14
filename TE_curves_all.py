@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-S-curve plotting script for Zeus radiation hydrodynamics simulations.
+Thermal Equilibrium state plotting script for ZEUS radiation magnetohydrodynamics simulations.
 Converted from IDL s_curve_all.pro to Python.
 """
 
@@ -21,7 +21,7 @@ MSOL = 1.989e33      # Solar mass
 def main():
     """Main function to process targets and create plots."""
     
-    print("Processing S-curve targets...")
+    print("Processing thermal equilibrium targets...")
     
     # Storage for plot data
     plot_data = []
@@ -159,10 +159,10 @@ def main():
 
 
 def create_plots(plot_data):
-    """Create both S-curve and alpha plots."""
+    """Create both thermal equilibrium and alpha plots."""
     
-    # Create S-curve plot
-    print("\nCreating S-curve plot...")
+    # Create thermal equilibrium plot
+    print("\nCreating thermal equilibrium plot...")
     fig1, ax1 = create_scurve_plot(plot_data)
     
     # Create alpha plot  
@@ -171,7 +171,7 @@ def create_plots(plot_data):
 
 
 def create_scurve_plot(plot_data):
-    """Create S-curve plot (sigma vs teff)."""
+    """Create thermal equilibrium plot (sigma vs teff)."""
     
     # Create output directory if it doesn't exist
     os.makedirs('./outputs', exist_ok=True)
@@ -196,23 +196,23 @@ def create_scurve_plot(plot_data):
     ax.set_yscale('log')
     ax.set_xlim(xrange)
     ax.set_ylim(yrange)
-    ax.set_xlabel(xlabel, fontsize=14)
-    ax.set_ylabel(ylabel, fontsize=14)
-    ax.tick_params(axis='both', which='major', labelsize=12)
-    ax.tick_params(axis='both', which='minor', labelsize=10)
+    ax.set_xlabel(xlabel, fontsize=16)
+    ax.set_ylabel(ylabel, fontsize=16)
+    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.tick_params(axis='both', which='minor', labelsize=12)
     
     # Plot data points
     for data in plot_data:
         color = COLORS.get(data['color_key'], 'black')
         ax.scatter(data['sigma'], data['teff'], 
                   c=color, s=50, marker='o', alpha=0.8, 
-                  edgecolors='black', linewidths=0.5,
+                  edgecolors='white', linewidths=0.3,
                   label=data['color_key'] if data == plot_data[0] else "")
     
     # Save and show
     plt.tight_layout()
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
-    print(f"S-curve plot saved to: {output_file}")
+    plt.savefig(output_file, dpi=300, bbox_inches='tight', transparent=True)
+    print(f"Thermal equilibrium plot saved to: {output_file}")
     plt.show()
     
     return fig, ax
@@ -253,10 +253,10 @@ def create_alpha_plot(plot_data):
     ax.set_yscale('log')
     ax.set_xlim(xrange)
     ax.set_ylim(yrange)
-    ax.set_xlabel(xlabel, fontsize=14)
-    ax.set_ylabel(ylabel, fontsize=14)
-    ax.tick_params(axis='both', which='major', labelsize=12)
-    ax.tick_params(axis='both', which='minor', labelsize=10)
+    ax.set_xlabel(xlabel, fontsize=16)
+    ax.set_ylabel(ylabel, fontsize=16)
+    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.tick_params(axis='both', which='minor', labelsize=12)
     
     # Plot reference lines (alpha = const) with different line styles
     xvals = np.logspace(np.log10(xrange[0]), np.log10(xrange[1]), 100)
@@ -268,10 +268,9 @@ def create_alpha_plot(plot_data):
     for data in plot_data:
         if data['pres'] > 0 and data['stress'] > 0:
             color = COLORS.get(data['color_key'], 'gray')
-            # Plot gray background point first (larger)
-            ax.scatter(data['pres'], data['stress'], c='gray', s=60, marker='o', alpha=0.6)
-            # Plot colored point on top (smaller)
-            ax.scatter(data['pres'], data['stress'], c=color, s=40, marker='o', alpha=0.8)
+            # Plot colored point with white edge
+            ax.scatter(data['pres'], data['stress'], c=color, s=50, marker='o', alpha=0.8,
+                      edgecolors='white', linewidths=0.3)
     
     # Only add legend if there are reference lines
     if len(ax.lines) > 0:
@@ -279,7 +278,7 @@ def create_alpha_plot(plot_data):
     
     # Save and show
     plt.tight_layout()
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.savefig(output_file, dpi=300, bbox_inches='tight', transparent=True)
     print(f"Alpha plot saved to: {output_file}")
     plt.show()
     
