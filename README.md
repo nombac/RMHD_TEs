@@ -29,7 +29,7 @@ Pressure vs Stress (viscosity analysis)
 
 ## Overview
 
-This repository compiles results from radiation MHD simulations using the ZEUS code with shearing box approximation. The main script `TE_curves_all.py` plots the thermal equilibrium states of accretion flows, showing the relationship between surface density (Σ) and effective temperature (T_eff) for different angular velocities (Ω).
+This repository compiles results from radiation MHD simulations using the ZEUS code with shearing box approximation. The main script `RMHD_TEs.py` plots the thermal equilibrium states of accretion flows, showing the relationship between surface density (Σ) and effective temperature (T_eff) for different angular velocities (Ω).
 
 ## Features
 
@@ -56,12 +56,10 @@ pip install numpy matplotlib
 
 | File | Description |
 |------|-------------|
-| `TE_curves_all.py` | Main script for generating thermal equilibrium curves |
+| `RMHD_TEs.py` | Main script for generating thermal equilibrium curves |
 | `target_config.py` | Configuration file listing all simulation targets and their parameters |
 | `zeus_param.py` | Reads ZEUS simulation parameters from configuration files |
 | `readu.py` | Binary data reader for ZEUS output files |
-| `constants.py` | Physical constants (Stefan-Boltzmann, solar mass, etc.) |
-| `zeus_utils.py` | Additional utilities for ZEUS data processing |
 
 ## Simulation Data Structure
 
@@ -134,12 +132,14 @@ Text file with simulation parameters including:
 3. Run the main script:
 
 ```bash
-python3 TE_curves_all.py
+python3 RMHD_TEs.py
 ```
 
 Output plots will be saved to:
-- `outputs/TE_curves_all.pdf` - TE curves plot
+- `outputs/TE_curves_all.pdf` - Thermal equilibrium curves plot
 - `outputs/alpha_all.pdf` - Alpha parameter plot
+- `outputs/TE_curves_all.png` - PNG version for web display
+- `outputs/alpha_all.png` - PNG version for web display
 
 ## Target Configuration
 
