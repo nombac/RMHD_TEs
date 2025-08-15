@@ -211,8 +211,16 @@ def create_scurve_plot(plot_data):
     
     # Save and show
     plt.tight_layout()
-    plt.savefig(output_file, dpi=300, bbox_inches='tight', transparent=True)
+    
+    # Save PDF with transparent background
+    plt.savefig(output_file, bbox_inches='tight', transparent=True)
     print(f"Thermal equilibrium plot saved to: {output_file}")
+    
+    # Save PNG version for README display
+    png_file = output_file.replace('.pdf', '.png')
+    plt.savefig(png_file, dpi=150, bbox_inches='tight', transparent=True)
+    print(f"PNG version saved to: {png_file}")
+    
     plt.show()
     
     return fig, ax
@@ -278,8 +286,16 @@ def create_alpha_plot(plot_data):
     
     # Save and show
     plt.tight_layout()
-    plt.savefig(output_file, dpi=300, bbox_inches='tight', transparent=True)
+    
+    # Save PDF with transparent background
+    plt.savefig(output_file, bbox_inches='tight', transparent=True)
     print(f"Alpha plot saved to: {output_file}")
+    
+    # Save PNG version for README display
+    png_file = output_file.replace('.pdf', '.png')
+    plt.savefig(png_file, dpi=150, bbox_inches='tight', transparent=True)
+    print(f"PNG version saved to: {png_file}")
+    
     plt.show()
     
     return fig, ax

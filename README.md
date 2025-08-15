@@ -2,6 +2,31 @@
 
 Thermal Equilibrium states from Radiation MagnetoHydroDynamics simulations of accretion flows.
 
+## Results
+
+<table>
+<tr>
+<td align="center">
+<a href="outputs/TE_curves_all.pdf">
+<img src="outputs/TE_curves_all.png" width="400" alt="Thermal Equilibrium Curves">
+</a>
+<br>
+<b>Thermal Equilibrium Curves</b><br>
+Surface density vs Effective temperature
+</td>
+<td align="center">
+<a href="outputs/alpha_all.pdf">
+<img src="outputs/alpha_all.png" width="400" alt="Alpha Parameter Plot">
+</a>
+<br>
+<b>Alpha Parameter Plot</b><br>
+Pressure vs Stress (viscosity analysis)
+</td>
+</tr>
+</table>
+
+📊 *Click on the images above to view the full PDF files*
+
 ## Overview
 
 This repository compiles results from radiation MHD simulations using the ZEUS code with shearing box approximation. The main script `TE_curves_all.py` plots the thermal equilibrium states of accretion flows, showing the relationship between surface density (Σ) and effective temperature (T_eff) for different angular velocities (Ω).
@@ -156,11 +181,26 @@ The thermal equilibrium curves represent steady-state solutions of accretion flo
 
 ## Citation
 
-[To be added]
+If you use this code or data in your research, please cite:
+
+```bibtex
+@software{rmhd_tes,
+  author = {Your Name},
+  title = {RMHD_TEs: Thermal Equilibrium states from Radiation MHD simulations},
+  year = {2024},
+  url = {https://github.com/nombac/RMHD_TEs}
+}
+```
 
 ## References
 
-[To be added]
+This work is based on the following publications:
+
+- Hirose, S., Krolik, J. H., & Blaes, O. (2009). "Radiation-Dominated Disks are Thermally Stable." *The Astrophysical Journal*, 691(1), 16-31. [DOI: 10.1088/0004-637X/691/1/16](https://doi.org/10.1088/0004-637X/691/1/16)
+
+- Hirose, S., Krolik, J. H., & Stone, J. M. (2006). "Vertical Structure of Gas Pressure-dominated Accretion Disks with Local Dissipation of Turbulence and Radiative Transport." *The Astrophysical Journal*, 640(2), 901-917. [DOI: 10.1086/499153](https://doi.org/10.1086/499153)
+
+- Hirose, S., & Krolik, J. H. (2007). "Stress-Pressure Lag and Thermal Runaway in Accretion Disk Models with Alpha Viscosity." *The Astrophysical Journal*, 666(2), 1087-1095. [DOI: 10.1086/519515](https://doi.org/10.1086/519515)
 
 ## License
 

@@ -1,5 +1,4 @@
 # Directories to ignore
-outputs/
 logs/
 obsolete/
 __pycache__/

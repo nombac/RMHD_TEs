@@ -28,7 +28,6 @@ TARGETS = [
     {'name': 'h2007', 'ave': [50, 150], 'color_key': 'h2007'},
     
     # h2009 series
-    {'name': 'test', 'ave': [50, 150], 'color_key': 'h2009'},
     {'name': '0211b', 'ave': [50, 150], 'color_key': 'h2009'},
     {'name': '0519b', 'ave': [50, 200], 'color_key': 'h2009'},
     {'name': '1126b', 'ave': [100, 400], 'color_key': 'h2009'},
