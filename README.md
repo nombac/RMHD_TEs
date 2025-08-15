@@ -1,6 +1,6 @@
 # RMHD_TEs
 
-Thermal Equilibrium states from Radiation MagnetoHydroDynamics simulations of accretion flows.
+Thermal Equilibrium states from Radiation MagnetoHydroDynamics simulations of accretion flows at different angular velocities.
 
 ## Results
 
@@ -25,7 +25,6 @@ Pressure vs Stress (viscosity analysis)
 </tr>
 </table>
 
-📊 *Click on the images above to view the full PDF files*
 
 ## Overview
 
@@ -45,7 +44,7 @@ This repository compiles results from radiation MHD simulations using the ZEUS c
 ### Python Dependencies
 
 ```bash
-pip install numpy matplotlib
+pip3 install numpy matplotlib
 ```
 
 - Python 3.7+
@@ -82,15 +81,7 @@ data/
 
 ### Data Directory Contents
 
-The `data/` directory contains preprocessed simulation data from various ZEUS-MP radiation MHD runs. This includes:
-- **h2006-h2007**: Early radiation MHD simulations (special cases with hardcoded values)
-- **h2009 series**: γ = 5/3 simulations exploring thermal equilibrium
-- **h2011 series**: γ = 1.4 simulations
-- **h2014 series**: Detailed exploration of upper, middle, and lower branches
-- **h2015 series**: Extended parameter studies
-- **h2016 series**: Simulations including self-gravity effects
-
-To regenerate or update the data files, use the provided `copy_data_files.zsh` script which copies necessary files from the original simulation directories.
+The `data/` directory contains preprocessed simulation data from various ZEUS radiation MHD runs. See [target_config.py](target_config.py) and [Target Configuration and References](#target-configuration-and-references) for details.
 
 ### File Formats
 
@@ -141,15 +132,16 @@ Output plots will be saved to:
 - `outputs/RMHD_TEs.png` - PNG version for web display
 - `outputs/RMHD_alphas.png` - PNG version for web display
 
-## Target Configuration
+## Target Configuration and References
 
 Simulations are grouped by series in `target_config.py`:
-- **h2006, h2007**: Special cases with hardcoded values
-- **h2009 series**: γ = 5/3 simulations
-- **h2011 series**: γ = 1.4 simulations
-- **h2014 series**: Upper, middle, and lower branch explorations
-- **h2015 series**: Extended parameter studies
-- **h2016 series**: Self-gravity included
+- **h2006 series**: Gas-dominated flow around a black hole (https://doi.org/10.1086/519515)
+- **h2007 series**: Gas-radiation-comparable flow around a black hole (https://doi.org/10.1086/519515)
+- **h2009 series**: Radiation-dominated flow around a black hole (https://doi.org/10.1088/0004-637X/691/1/16)
+- **h2011 series**: Outer accretion flow with a dead zone around a young star (https://doi.org/10.1088/2041-8205/732/2/L30)
+- **h2014 series**: Accretion flow around a white dwarf (https://doi.org/10.1088/0004-637X/787/1/1)
+- **h2015 series**: Inner accretion flow around a young star (https://doi.org/10.1093/mnras/stv203)
+- **h2016 series**: Self-gravitating accretion flow around a young star (https://doi.org/10.1093/mnras/stx824)
 
 Each target specifies:
 - `name`: Simulation identifier
@@ -180,36 +172,16 @@ The thermal equilibrium curves represent steady-state solutions of accretion flo
 - Used to analyze the effective viscosity parameter
 
 ## Citation
-
 If you use this code or data in your research, please cite:
 
 ```bibtex
 @software{rmhd_tes,
-  author = {Your Name},
+  author = {Shigenobu Hirose},
   title = {RMHD_TEs: Thermal Equilibrium states from Radiation MHD simulations},
   year = {2024},
   url = {https://github.com/nombac/RMHD_TEs}
 }
 ```
 
-## References
-
-This work is based on the following publications:
-
-- Hirose, S., Krolik, J. H., & Blaes, O. (2009). "Radiation-Dominated Disks are Thermally Stable." *The Astrophysical Journal*, 691(1), 16-31. [DOI: 10.1088/0004-637X/691/1/16](https://doi.org/10.1088/0004-637X/691/1/16)
-
-- Hirose, S., Krolik, J. H., & Stone, J. M. (2006). "Vertical Structure of Gas Pressure-dominated Accretion Disks with Local Dissipation of Turbulence and Radiative Transport." *The Astrophysical Journal*, 640(2), 901-917. [DOI: 10.1086/499153](https://doi.org/10.1086/499153)
-
-- Hirose, S., & Krolik, J. H. (2007). "Stress-Pressure Lag and Thermal Runaway in Accretion Disk Models with Alpha Viscosity." *The Astrophysical Journal*, 666(2), 1087-1095. [DOI: 10.1086/519515](https://doi.org/10.1086/519515)
-
-## License
-
-[To be added]
-
 ## Authors
-
-[To be added]
-
-## Acknowledgments
-
-[To be added]
+Shigenobu Hirose (shirose@jamstec.go.jp)

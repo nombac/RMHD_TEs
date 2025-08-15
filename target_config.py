@@ -15,7 +15,6 @@ COLORS = {
     'h2014': 'blue',
     'h2015': 'black',
     'h2016': 'brown',
-    'dummy': 'black'
 }
 
 # Target definitions
@@ -95,11 +94,9 @@ TARGETS = [
     {'name': 'wt0487', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0446', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'wt0442', 'ave': [10, 110], 'color_key': 'h2014'},
-    
     # h2014 series (middle branch)
     {'name': 'ws0474', 'ave': [80, 180], 'color_key': 'h2014'},
     {'name': 'ws0473', 'ave': [50, 150], 'color_key': 'h2014'},
-    
     # h2014 series (lower branch)
     {'name': 'ws0466', 'ave': [20, 100], 'color_key': 'h2014'},
     {'name': 'ws0438', 'ave': [50, 150], 'color_key': 'h2014'},
@@ -108,7 +105,4 @@ TARGETS = [
     {'name': 'ws0434', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0476', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0445', 'ave': [50, 150], 'color_key': 'h2014'},
-    
-    # Dummy entry to mark end
-    {'name': 'dummy', 'ave': [0, 0], 'color_key': 'dummy'}
 ]
