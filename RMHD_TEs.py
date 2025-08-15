@@ -177,7 +177,7 @@ def create_scurve_plot(plot_data):
     os.makedirs('./outputs', exist_ok=True)
     
     # Plot settings
-    output_file = './outputs/TE_curves_all.pdf'
+    output_file = './outputs/RMHD_TEs.pdf'
     xlabel = r'Surface density [g cm$^{-2}$]'
     ylabel = r'Effective temperature [K]'
     xrange = [1e1, 1e6]
@@ -233,7 +233,7 @@ def create_alpha_plot(plot_data):
     os.makedirs('./outputs', exist_ok=True)
     
     # Plot settings
-    output_file = './outputs/alpha_all.pdf'
+    output_file = './outputs/RMHD_alphas.pdf'
     xlabel = r'Pressure [dyn cm$^{-2}$]'
     ylabel = r'Stress [dyn cm$^{-2}$]'
     

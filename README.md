@@ -7,16 +7,16 @@ Thermal Equilibrium states from Radiation MagnetoHydroDynamics simulations of ac
 <table>
 <tr>
 <td align="center">
-<a href="outputs/TE_curves_all.pdf">
-<img src="outputs/TE_curves_all.png" width="400" alt="Thermal Equilibrium Curves">
+<a href="outputs/RMHD_TEs.pdf">
+<img src="outputs/RMHD_TEs.png" width="400" alt="Thermal Equilibrium Curves">
 </a>
 <br>
 <b>Thermal Equilibrium Curves</b><br>
 Surface density vs Effective temperature
 </td>
 <td align="center">
-<a href="outputs/alpha_all.pdf">
-<img src="outputs/alpha_all.png" width="400" alt="Alpha Parameter Plot">
+<a href="outputs/RMHD_alphas.pdf">
+<img src="outputs/RMHD_alphas.png" width="400" alt="Alpha Parameter Plot">
 </a>
 <br>
 <b>Alpha Parameter Plot</b><br>
@@ -136,10 +136,10 @@ python3 RMHD_TEs.py
 ```
 
 Output plots will be saved to:
-- `outputs/TE_curves_all.pdf` - Thermal equilibrium curves plot
-- `outputs/alpha_all.pdf` - Alpha parameter plot
-- `outputs/TE_curves_all.png` - PNG version for web display
-- `outputs/alpha_all.png` - PNG version for web display
+- `outputs/RMHD_TEs.pdf` - Thermal equilibrium curves plot
+- `outputs/RMHD_alphas.pdf` - Alpha parameter plot
+- `outputs/RMHD_TEs.png` - PNG version for web display
+- `outputs/RMHD_alphas.png` - PNG version for web display
 
 ## Target Configuration
 
