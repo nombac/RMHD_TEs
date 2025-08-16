@@ -8,13 +8,13 @@ DATA_BASE_PATH = './data'
 
 # Color definitions
 COLORS = {
-    'h2006': 'limegreen',
-    'h2007': 'red',
-    'h2009': 'orange',
-    'h2011': 'violet',
-    'h2014': 'blue',
-    'h2015': 'black',
-    'h2016': 'brown',
+    'h2006': '#FF0000',      # Pure red
+    'h2007': '#FF69B4',      # Hot pink
+    'h2009': '#8B0000',      # Dark red
+    'h2011': '#00CED1',      # Dark turquoise
+    'h2014': '#00FF00',      # Lime green (bright)
+    'h2015': '#0000FF',      # Pure blue
+    'h2016': '#9370DB',      # Medium purple
 }
 
 # Target definitions

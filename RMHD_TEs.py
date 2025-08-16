@@ -201,13 +201,60 @@ def create_scurve_plot(plot_data):
     ax.tick_params(axis='both', which='major', labelsize=14)
     ax.tick_params(axis='both', which='minor', labelsize=12)
     
-    # Plot data points
+    # Collect omega values by color_key for legend
+    omega_by_key = {}
+    for data in plot_data:
+        key = data['color_key']
+        if key not in omega_by_key:
+            omega_by_key[key] = []
+        omega_by_key[key].append(data['omega'])
+    
+    # Define legend order
+    legend_order = ['h2009', 'h2007', 'h2006', 'h2014', 'h2015', 'h2011', 'h2016']
+    
+    # Plot data points without labels first
     for data in plot_data:
         color = COLORS.get(data['color_key'], 'black')
         ax.scatter(data['sigma'], data['teff'], 
                   c=color, s=50, marker='o', alpha=0.8, 
-                  edgecolors='white', linewidths=0.3,
-                  label=data['color_key'] if data == plot_data[0] else "")
+                  edgecolors='white', linewidths=0.3)
+    
+    # Add legend entries in specified order
+    legend_handles = []
+    legend_labels = []
+    
+    # Define star types and descriptions for each group
+    star_descriptions = {
+        'h2006': 'black hole; gas-dominated',
+        'h2007': 'black hole; gas-rad comparable', 
+        'h2009': 'black hole; radiation-dominated',
+        'h2014': 'white dwarf; dwarf nova',
+        'h2015': 'protostar; inner radius',
+        'h2011': 'protostar; intermed. radius',
+        'h2016': 'protostar; outer radius'
+    }
+    
+    for key in legend_order:
+        if key in omega_by_key:
+            # Calculate mean omega for this group
+            mean_omega = np.mean(omega_by_key[key])
+            star_description = star_descriptions.get(key, '')
+            if mean_omega > 0:
+                log_omega = np.log10(mean_omega)
+                label = f'{key} (log Ω = {log_omega:.2f}; {star_description})'
+            else:
+                label = f'{key} ({star_description})' if star_description else f'{key}'
+            
+            # Create a dummy scatter plot for legend
+            color = COLORS.get(key, 'black')
+            handle = ax.scatter([], [], c=color, s=50, marker='o', alpha=0.8,
+                              edgecolors='white', linewidths=0.3)
+            legend_handles.append(handle)
+            legend_labels.append(label)
+    
+    # Add legend if there are labeled items
+    if legend_handles:
+        ax.legend(legend_handles, legend_labels, loc='upper left', fontsize=10, framealpha=0.9)
     
     # Save and show
     plt.tight_layout()
@@ -272,17 +319,67 @@ def create_alpha_plot(plot_data):
     ax.plot(xvals, xvals * 1e-2, 'k--', alpha=0.5, linewidth=1, label=r'$\alpha=0.01$')    # dashed line
     ax.plot(xvals, xvals * 1e-3, 'k:', alpha=0.5, linewidth=1, label=r'$\alpha=0.001$')    # dotted line
     
-    # Plot data points
+    # Collect omega values by color_key for legend
+    omega_by_key = {}
+    for data in plot_data:
+        key = data['color_key']
+        if key not in omega_by_key:
+            omega_by_key[key] = []
+        if data['pres'] > 0 and data['stress'] > 0:  # Only valid data
+            omega_by_key[key].append(data['omega'])
+    
+    # Define legend order
+    legend_order = ['h2009', 'h2007', 'h2006', 'h2015', 'h2014', 'h2011', 'h2016']
+    
+    # Plot data points without labels first
     for data in plot_data:
         if data['pres'] > 0 and data['stress'] > 0:
             color = COLORS.get(data['color_key'], 'gray')
-            # Plot colored point with white edge
             ax.scatter(data['pres'], data['stress'], c=color, s=50, marker='o', alpha=0.8,
                       edgecolors='white', linewidths=0.3)
     
-    # Only add legend if there are reference lines
-    if len(ax.lines) > 0:
-        ax.legend(loc='upper left', fontsize=10)
+    # Create legend entries
+    legend_handles = []
+    legend_labels = []
+    
+    # Add reference line entries first
+    for line, label in zip(ax.lines[:3], [r'$\alpha=0.1$', r'$\alpha=0.01$', r'$\alpha=0.001$']):
+        legend_handles.append(line)
+        legend_labels.append(label)
+    
+    # Define star types and descriptions for each group
+    star_descriptions = {
+        'h2006': 'black hole; gas-dominated',
+        'h2007': 'black hole; gas-rad comparable',
+        'h2009': 'black hole; radiation-dominated', 
+        'h2014': 'white dwarf; dwarf nova',
+        'h2015': 'protostar; inner radius',
+        'h2011': 'protostar; intermed. radius',
+        'h2016': 'protostar; outer radius'
+    }
+    
+    # Add data group entries in specified order
+    for key in legend_order:
+        if key in omega_by_key and omega_by_key[key]:
+            # Calculate mean omega for this group
+            mean_omega = np.mean(omega_by_key[key])
+            star_description = star_descriptions.get(key, '')
+            if mean_omega > 0:
+                log_omega = np.log10(mean_omega)
+                label = f'{key} (log Ω = {log_omega:.2f}; {star_description})'
+            else:
+                label = f'{key} ({star_description})' if star_description else f'{key}'
+            
+            # Create a dummy scatter plot for legend
+            color = COLORS.get(key, 'gray')
+            handle = ax.scatter([], [], c=color, s=50, marker='o', alpha=0.8,
+                              edgecolors='white', linewidths=0.3)
+            legend_handles.append(handle)
+            legend_labels.append(label)
+    
+    # Add legend with all entries
+    if legend_handles:
+        ax.legend(legend_handles, legend_labels, loc='upper left', fontsize=10, framealpha=0.9)
     
     # Save and show
     plt.tight_layout()
