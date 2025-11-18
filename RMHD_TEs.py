@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import os
+import argparse
 from target_config import TARGETS, COLORS, DATA_BASE_PATH
 from zeus_param import zeus_param
 from readu import readu
@@ -20,6 +21,17 @@ MSOL = 1.989e33      # Solar mass
 
 def main():
     """Main function to process targets and create plots."""
+    
+    # CLI options
+    parser = argparse.ArgumentParser(description="Plot thermal equilibrium and alpha relations.")
+    parser.add_argument(
+        "--legend",
+        choices=["on", "off"],
+        default="on",
+        help="Toggle legends in figures (default: on)",
+    )
+    args = parser.parse_args()
+    show_legend = args.legend == "on"
     
     print("Processing thermal equilibrium targets...")
     
@@ -155,22 +167,22 @@ def main():
         print(f"{targ['name']}: sigma={sigma:.2e}, teff={teff:.2e}, omega={omega:.2e}, lz={lz:.2e}")
     
     # Create plots
-    create_plots(plot_data)
+    create_plots(plot_data, show_legend=show_legend)
 
 
-def create_plots(plot_data):
+def create_plots(plot_data, show_legend=True):
     """Create both thermal equilibrium and alpha plots."""
     
     # Create thermal equilibrium plot
     print("\nCreating thermal equilibrium plot...")
-    fig1, ax1 = create_scurve_plot(plot_data)
+    fig1, ax1 = create_scurve_plot(plot_data, show_legend=show_legend)
     
     # Create alpha plot  
     print("Creating alpha plot...")
-    fig2, ax2 = create_alpha_plot(plot_data)
+    fig2, ax2 = create_alpha_plot(plot_data, show_legend=show_legend)
 
 
-def create_scurve_plot(plot_data):
+def create_scurve_plot(plot_data, show_legend=True):
     """Create thermal equilibrium plot (sigma vs teff)."""
     
     # Create output directory if it doesn't exist
@@ -216,7 +228,7 @@ def create_scurve_plot(plot_data):
     for data in plot_data:
         color = COLORS.get(data['color_key'], 'black')
         ax.scatter(data['sigma'], data['teff'], 
-                  c=color, s=50, marker='o', alpha=0.8, 
+                  c=color, s=50, marker='o', alpha=1, 
                   edgecolors='white', linewidths=0.3)
     
     # Add legend entries in specified order
@@ -247,14 +259,14 @@ def create_scurve_plot(plot_data):
             
             # Create a dummy scatter plot for legend
             color = COLORS.get(key, 'black')
-            handle = ax.scatter([], [], c=color, s=50, marker='o', alpha=0.8,
+            handle = ax.scatter([], [], c=color, s=50, marker='o', alpha=1,
                               edgecolors='white', linewidths=0.3)
             legend_handles.append(handle)
             legend_labels.append(label)
     
-    # Add legend if there are labeled items
-    if legend_handles:
-        ax.legend(legend_handles, legend_labels, loc='upper left', fontsize=10, framealpha=0.9)
+    # Add legend if requested and there are labeled items
+    if show_legend and legend_handles:
+        ax.legend(legend_handles, legend_labels, loc='upper left', fontsize=10, framealpha=1)
     
     # Save and show
     plt.tight_layout()
@@ -273,7 +285,7 @@ def create_scurve_plot(plot_data):
     return fig, ax
 
 
-def create_alpha_plot(plot_data):
+def create_alpha_plot(plot_data, show_legend=True):
     """Create alpha plot (pres vs stress)."""
     
     # Create output directory if it doesn't exist
@@ -281,7 +293,7 @@ def create_alpha_plot(plot_data):
     
     # Plot settings
     output_file = './outputs/RMHD_alphas.pdf'
-    xlabel = r'Pressure [dyn cm$^{-2}$]'
+    xlabel = r'Total pressure [dyn cm$^{-2}$]'
     ylabel = r'Stress [dyn cm$^{-2}$]'
     
     # Determine ranges from data
@@ -335,7 +347,7 @@ def create_alpha_plot(plot_data):
     for data in plot_data:
         if data['pres'] > 0 and data['stress'] > 0:
             color = COLORS.get(data['color_key'], 'gray')
-            ax.scatter(data['pres'], data['stress'], c=color, s=50, marker='o', alpha=0.8,
+            ax.scatter(data['pres'], data['stress'], c=color, s=50, marker='o', alpha=1,
                       edgecolors='white', linewidths=0.3)
     
     # Create legend entries
@@ -372,14 +384,19 @@ def create_alpha_plot(plot_data):
             
             # Create a dummy scatter plot for legend
             color = COLORS.get(key, 'gray')
-            handle = ax.scatter([], [], c=color, s=50, marker='o', alpha=0.8,
+            handle = ax.scatter([], [], c=color, s=50, marker='o', alpha=1,
                               edgecolors='white', linewidths=0.3)
             legend_handles.append(handle)
             legend_labels.append(label)
     
-    # Add legend with all entries
+    # Build legend: always keep α reference entries; optionally add data entries
+    if not show_legend:
+        # Keep only the first three (α reference lines)
+        legend_handles = legend_handles[:3]
+        legend_labels = legend_labels[:3]
+    
     if legend_handles:
-        ax.legend(legend_handles, legend_labels, loc='upper left', fontsize=10, framealpha=0.9)
+        ax.legend(legend_handles, legend_labels, loc='upper left', fontsize=10, framealpha=1)
     
     # Save and show
     plt.tight_layout()

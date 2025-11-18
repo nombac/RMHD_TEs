@@ -126,6 +126,16 @@ Text file with simulation parameters including:
 python3 RMHD_TEs.py
 ```
 
+Optional legend toggle:
+
+```bash
+# Hide legends
+python3 RMHD_TEs.py --legend off
+
+# Show legends (default)
+python3 RMHD_TEs.py --legend on
+```
+
 Output plots will be saved to:
 - `outputs/RMHD_TEs.pdf` - Thermal equilibrium curves plot
 - `outputs/RMHD_alphas.pdf` - Alpha parameter plot

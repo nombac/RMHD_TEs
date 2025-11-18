@@ -2,6 +2,7 @@
 logs/
 obsolete/
 __pycache__/
+temporary/
 
 # Local documentation
 CLAUDE.md

@@ -8,13 +8,13 @@ DATA_BASE_PATH = './data'
 
 # Color definitions
 COLORS = {
-    'h2006': '#FF0000',      # Pure red
-    'h2007': '#FF69B4',      # Hot pink
-    'h2009': '#8B0000',      # Dark red
-    'h2011': '#00CED1',      # Dark turquoise
-    'h2014': '#00FF00',      # Lime green (bright)
-    'h2015': '#0000FF',      # Pure blue
-    'h2016': '#9370DB',      # Medium purple
+    'h2006': 'chocolate',      # Pure red
+    'h2007': 'orange',      # Hot pink
+    'h2009': 'red',      # Dark red
+    'h2011': 'blue',      # Dark turquoise
+    'h2014': 'teal',      # Lime green (bright)
+    'h2015': 'dodgerblue',      # Pure blue
+    'h2016': 'navy',      # Medium purple
 }
 
 # Target definitions
@@ -29,6 +29,7 @@ TARGETS = [
     # h2009 series
     {'name': '0211b', 'ave': [50, 150], 'color_key': 'h2009'},
     {'name': '0519b', 'ave': [50, 200], 'color_key': 'h2009'},
+    {'name': '1112a', 'ave': [100, 400], 'color_key': 'h2009'},
     {'name': '1126b', 'ave': [100, 400], 'color_key': 'h2009'},
     {'name': '0520a', 'ave': [150, 300], 'color_key': 'h2009'},
     {'name': '0320a', 'ave': [150, 300], 'color_key': 'h2009'},
@@ -83,8 +84,10 @@ TARGETS = [
     {'name': 'ws0430', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0429', 'ave': [90, 190], 'color_key': 'h2014'},
     {'name': 'ws0439', 'ave': [50, 150], 'color_key': 'h2014'},
+    {'name': 'ws0469', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0491', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0470', 'ave': [50, 150], 'color_key': 'h2014'},
+    {'name': 'ws0471', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0492', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0425', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0427', 'ave': [50, 150], 'color_key': 'h2014'},
@@ -92,6 +95,7 @@ TARGETS = [
     {'name': 'ws0433', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0436', 'ave': [30, 130], 'color_key': 'h2014'},
     {'name': 'wt0487', 'ave': [50, 150], 'color_key': 'h2014'},
+    {'name': 'ws0441', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0446', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'wt0442', 'ave': [10, 110], 'color_key': 'h2014'},
     # h2014 series (middle branch)
@@ -102,6 +106,7 @@ TARGETS = [
     {'name': 'ws0438', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'wt0435', 'ave': [120, 220], 'color_key': 'h2014'},
     {'name': 'ws0462', 'ave': [50, 150], 'color_key': 'h2014'},
+    {'name': 'ws0465', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0434', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0476', 'ave': [50, 150], 'color_key': 'h2014'},
     {'name': 'ws0445', 'ave': [50, 150], 'color_key': 'h2014'},

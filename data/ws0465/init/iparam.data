@@ -1,0 +1,4 @@
+&lnrmcon  h0 =        51757444. /
+&tnrmcon  omega =     0.0064034830  /
+&dflcon   dfl =    1.0000000e-06 /
+&fluxcon  f0 =    1.7124334e+09 /
